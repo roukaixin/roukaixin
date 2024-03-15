@@ -1,0 +1,29 @@
+name: github repo sync to gitee repo
+
+on:
+  push:
+    branches: [ main ]
+
+  # 定时调用(每天1次)
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  toGiee:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository list exclude private
+        id: repo
+        uses: yi-Xu-0100/repo-list-generator@master
+      - name: Mirror the Github repos to Gitee.
+        uses: Yikun/hub-mirror-action@master
+        with:
+          src: github/roukaixin
+          dst: gitee/roukaixin
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token: ${{ secrets.GITEE_TOKEN }}
+          account_type: user
+          src_account_type: user
+          dst_account_type: user
+          clone_style: "ssh"
+          debug: true
+          static_list: ${{ steps.repo.outputs.repoList_FORK }}
