@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Get repository list exclude private
         id: repo
-        uses: yi-Xu-0100/repo-list-generator@master
+        uses: yi-Xu-0100/repo-list-generator@v1.1.1
       - name: Mirror the Github repos to Gitee.
         uses: Yikun/hub-mirror-action@master
         with:
