@@ -22,6 +22,6 @@ jobs:
           src_account_type: user
           dst_account_type: user
           clone_style: "ssh"
-          black_list: "roukaixin.github.io,FixIt"
+          black_list: "roukaixin.github.io,FixIt,image-oss"
           debug: false
           static_list: ${{ steps.repo.outputs.repoList_FORK }}
