@@ -25,3 +25,17 @@ jobs:
           black_list: "roukaixin.github.io,FixIt"
           debug: false
           static_list: ${{ steps.repo.outputs.repoList_FORK }}
+      - name: Mirror the Github Organization to Gitee.
+        uses: Yikun/hub-mirror-action@master
+        with:
+          src: github/roukaixin-blog
+          dst: gitee/roukaixin-blog
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token: ${{ secrets.GITEE_TOKEN }}
+          account_type: user
+          src_account_type: user
+          dst_account_type: user
+          clone_style: "ssh"
+          black_list: "roukaixin.github.io,FixIt"
+          debug: false
+          static_list: ${{ steps.repo.outputs.repoList_FORK }}
