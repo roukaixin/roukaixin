@@ -1,9 +1,6 @@
 name: github repo sync to gitee repo
 
 on:
-  push:
-    branches:
-      - main
   # 定时调用，每天0点执行，因为 github 是在国外，所以时间比中国晚8个小时
   schedule:
     - cron: '0 16 * * *'
