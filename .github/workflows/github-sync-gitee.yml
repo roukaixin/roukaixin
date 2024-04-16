@@ -25,6 +25,15 @@ jobs:
           black_list: "roukaixin.github.io,FixIt,image-oss"
           debug: false
           static_list: ${{ steps.repo.outputs.repoList_FORK }}
+
+  sync-org-gitee:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Organization repository list exclude private
+        id: repo
+        uses: yi-Xu-0100/repo-list-generator@v1.1.1
+        with:
+          user: roukaixin-blog
       - name: Mirror the Github Organization to Gitee.
         uses: Yikun/hub-mirror-action@master
         with:
@@ -36,6 +45,6 @@ jobs:
           src_account_type: user
           dst_account_type: user
           clone_style: "ssh"
-          black_list: "roukaixin.github.io,FixIt"
+          black_list: "roukaixin-blog.github.io"
           debug: false
           static_list: ${{ steps.repo.outputs.repoList_FORK }}
