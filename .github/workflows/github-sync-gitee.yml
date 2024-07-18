@@ -1,4 +1,4 @@
-name: github repo sync to gitee repo
+name: github 仓库同步到 gitee 仓库
 
 on:
   # 定时调用，每天0点执行，因为 github 是在国外，所以时间比中国晚8个小时
@@ -6,12 +6,13 @@ on:
     - cron: '0 16 * * *'
 jobs:
   sync-gitee:
+    name: 个人仓库同步
     runs-on: ubuntu-latest
     steps:
-      - name: Get repository list exclude private
+      - name: 获取除了私有仓库的所有个人仓库
         id: repo
         uses: yi-Xu-0100/repo-list-generator@v1.1.1
-      - name: Mirror the Github repos to Gitee.
+      - name: github 同步到 gitee
         uses: Yikun/hub-mirror-action@master
         with:
           src: github/roukaixin
@@ -27,14 +28,15 @@ jobs:
           static_list: ${{ steps.repo.outputs.repoList_FORK }}
 
   sync-org-gitee:
+    name: 组织仓库同步
     runs-on: ubuntu-latest
     steps:
-      - name: Get Organization repository list exclude private
+      - name: 获取除了私有仓库的所有组织仓库
         id: repo
         uses: yi-Xu-0100/repo-list-generator@v1.1.1
         with:
           user: roukaixin-blog
-      - name: Mirror the Github Organization to Gitee.
+      - name: 组织仓库从 github 同步到 gitee
         uses: Yikun/hub-mirror-action@master
         with:
           src: github/roukaixin-blog
