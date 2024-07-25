@@ -23,7 +23,7 @@ jobs:
           src_account_type: user
           dst_account_type: user
           clone_style: "ssh"
-          black_list: "roukaixin.github.io,FixIt,image-oss,docker_image_pusher,aggregator,gitea,linux"
+          black_list: "roukaixin.github.io,FixIt,image-oss,docker_image_pusher,aggregator,gitea,linux,serv00-login,datax-web"
           debug: false
           static_list: ${{ steps.repo.outputs.repoList_FORK }}
 
